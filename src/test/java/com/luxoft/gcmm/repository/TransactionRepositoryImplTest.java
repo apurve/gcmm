@@ -8,29 +8,30 @@ import org.junit.Test;
 import java.math.BigDecimal;
 import java.util.List;
 
-import static com.luxoft.gcmm.TestUtils.TransactionDataHelper.populateValidTransactionDummyTransactions;
+import static com.luxoft.gcmm.TestUtils.TransactionDataHelper.populateFiveDummyTransactions;
 
 public class TransactionRepositoryImplTest {
 
-    TransactionRepositoryImpl transactionRepository = null;
+    TransactionRepository transactionRepository = null;
 
     @Before
     public void initialize() throws InterruptedException {
         transactionRepository = new TransactionRepositoryImpl();
-        populateValidTransactionDummyTransactions(transactionRepository);
+        populateFiveDummyTransactions(transactionRepository);
         //transactionRepository.printAll();
     }
 
     @Test
     public void testTransactionCountInRepository(){
-        Assert.assertEquals(transactionRepository.getTransactions().size(), 5);
+        Assert.assertEquals(5, transactionRepository.getTransactions().getTransactionList().size());
     }
 
     @Test
     public void testTransactionRepositoryIsNotCorrupted(){
-        List<Transaction> transactions = transactionRepository.getTransactions();
+        List<Transaction> transactions = transactionRepository.getTransactions().getTransactionList();
         transactions.get(0).setPrice(BigDecimal.valueOf(10000));
-        Assert.assertNotEquals(transactions.get(0).getPrice(), transactionRepository.getTransactions().get(0).getPrice());
+        Assert.assertNotEquals(transactions.get(0).getPrice(),
+                transactionRepository.getTransactions().getTransactionList().get(0).getPrice());
     }
 
 }

@@ -11,24 +11,24 @@ public class TransactionRepositoryImpl implements TransactionRepository {
     private static final Transactions transactions = new Transactions();
 
     static {
-        transactions.setTransactions(new ArrayList<>());
+        transactions.setTransactionList(new ArrayList<>());
     }
 
     @Override
     public void addTransaction(Transaction transaction) {
         if(transaction!=null) {
-            transactions.getTransactions().add(transaction);
+            transactions.getTransactionList().add(transaction);
         }
     }
 
     @Override
-    public List<Transaction> getTransactions() {
-        return transactions.clone().getTransactions();
+    public Transactions getTransactions() {
+        return transactions.clone();
     }
 
     @Override
     public  void  printAll(){
-        transactions.getTransactions().forEach( transaction -> {
+        transactions.getTransactionList().forEach(transaction -> {
             System.out.println(transaction);
         });
     }

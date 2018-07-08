@@ -98,9 +98,11 @@ public class Transaction implements  Cloneable {
 
     public Transaction clone(){
 
-        final Transaction transaction = new Transaction();
-        LocalDateTime copy = LocalDateTime.of(this.transactionDateTime.toLocalDate(), this.transactionDateTime.toLocalTime());
-        //TODO: // LIke wise clone can be implemented - Please check assumptions for more informataion.
+        final Transaction transaction = new Transaction(this.oilID,
+                LocalDateTime.of(this.transactionDateTime.toLocalDate(), this.transactionDateTime.toLocalTime()),
+                Integer.valueOf(this.quantity),
+                this.transactionIndicator,
+                new BigDecimal(this.price.toString()));
         return  transaction;
     }
 
