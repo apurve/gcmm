@@ -1,9 +1,10 @@
 package com.luxoft.gcmm.calculators.types;
 
-import com.luxoft.gcmm.calculators.results.RevenueYield;
-import com.luxoft.gcmm.model.OilTestFactory;
+import com.luxoft.gcmm.model.OilFactory;
 import org.junit.Before;
 import org.junit.Test;
+
+import java.math.BigDecimal;
 
 public class RevenueYieldCalculatorTest {
 
@@ -17,24 +18,24 @@ public class RevenueYieldCalculatorTest {
 
     @Test(expected = IllegalArgumentException.class)
     public void testRevenueYieldForZeroPrice() {
-        RevenueYield revenueYield = revenueYieldCalculator.calculate(OilTestFactory.initializeACCOil(), 0.0);
+        revenueYieldCalculator.calculate(OilFactory.ACC.get(), BigDecimal.ZERO);
     }
 
     @Test(expected = IllegalArgumentException.class)
     public void testRevenueYieldForNegativePrice() {
-        RevenueYield revenueYield = revenueYieldCalculator.calculate(OilTestFactory.initializeACCOil(), -10.0);
+        revenueYieldCalculator.calculate(OilFactory.ACC.get(), BigDecimal.valueOf(-10.0));
     }
 
     @Test
     public void testRevenueYieldForPositivePrice() {
-        RevenueYield revenueYield = revenueYieldCalculator.calculate(OilTestFactory.initializeACCOil(), 10.0);
-        assert Double.valueOf(0.1).equals(revenueYield.getResult());
+        BigDecimal revenueYield = revenueYieldCalculator.calculate(OilFactory.ACC.get(), BigDecimal.valueOf(10.0));
+        assert BigDecimal.valueOf(0.1).equals(revenueYield);
     }
 
     @Test
     public void testRevenueYieldForPremiumOil() {
-        RevenueYield revenueYield = revenueYieldCalculator.calculate(OilTestFactory.initializeTIMOil(), 10.0);
-        assert Double.valueOf(3.5).equals(revenueYield.getResult());
+        BigDecimal revenueYield = revenueYieldCalculator.calculate(OilFactory.TIM.get(), BigDecimal.valueOf(10.0));
+        assert BigDecimal.valueOf(3.5).equals(revenueYield);
     }
 
 }

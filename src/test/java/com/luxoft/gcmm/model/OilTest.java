@@ -7,14 +7,14 @@ import org.junit.Test;
 public class OilTest {
 
     private Oil acc = null;
-    private Oil accPremium = null;
+    //private Oil accPremium = null;
     private Oil rew = null;
 
     @Before
     public void initializeOils() {
-        acc = OilTestFactory.initializeACCOil();
-        accPremium = OilTestFactory.initializePremiumACCOil();
-        rew = OilTestFactory.initializeREWOil();
+        acc = OilFactory.ACC.get();
+        //accPremium = OilFactory.ACC.get();
+        rew = OilFactory.REW.get();
     }
 
     @Test
@@ -27,10 +27,10 @@ public class OilTest {
         assert acc.hashCode() != rew.hashCode();
     }
 
-    @Test
+    /*@Test
     public void testEqualsOnDifferentOilTypes() {
         assert !acc.equals(accPremium);
-    }
+    }*/
 
     @Test
     public void testEqualsOnDifferentOils() {

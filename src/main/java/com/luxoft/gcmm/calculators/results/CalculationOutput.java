@@ -1,15 +1,9 @@
 package com.luxoft.gcmm.calculators.results;
 
-public abstract class CalculationOutput {
+import java.math.BigDecimal;
+import java.util.List;
 
-    private Double result;
+public interface CalculationOutput {
 
-    CalculationOutput(Double result) {
-        this.result = result;
-    }
 
-    public Double getResult() {
-        return result;
-    }
-    
 }

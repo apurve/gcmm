@@ -1,6 +1,7 @@
 package com.luxoft.gcmm.model;
 
 import java.io.Serializable;
+import java.math.BigDecimal;
 import java.util.Objects;
 
 public class Oil implements Serializable {
@@ -9,16 +10,17 @@ public class Oil implements Serializable {
 
     private OilType type;
 
-    private int fixedRevenue;
+    private BigDecimal fixedRevenue;
 
-    private Integer variableRevenue;
+    private BigDecimal variableRevenue;
 
-    private Integer barrelValue;
+    private BigDecimal barrelValue;
 
     public Oil(String id, OilType oilType) {
         super();
         this.id = id;
         this.type = oilType;
+        this.fixedRevenue = BigDecimal.ZERO;
     }
 
     @Override
@@ -53,27 +55,27 @@ public class Oil implements Serializable {
         this.type = type;
     }
 
-    public int getFixedRevenue() {
+    public BigDecimal getFixedRevenue() {
         return fixedRevenue;
     }
 
-    public void setFixedRevenue(int fixedRevenue) {
+    public void setFixedRevenue(BigDecimal fixedRevenue) {
         this.fixedRevenue = fixedRevenue;
     }
 
-    public Integer getVariableRevenue() {
+    public BigDecimal getVariableRevenue() {
         return variableRevenue;
     }
 
-    public void setVariableRevenue(Integer variableRevenue) {
+    public void setVariableRevenue(BigDecimal variableRevenue) {
         this.variableRevenue = variableRevenue;
     }
 
-    public Integer getBarrelValue() {
+    public BigDecimal getBarrelValue() {
         return barrelValue;
     }
 
-    public void setBarrelValue(Integer barrelValue) {
+    public void setBarrelValue(BigDecimal barrelValue) {
         this.barrelValue = barrelValue;
     }
 
