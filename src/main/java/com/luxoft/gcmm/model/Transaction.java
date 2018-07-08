@@ -6,6 +6,7 @@ import com.luxoft.gcmm.model.types.TransactionIndicator;
 import java.math.BigDecimal;
 import java.time.LocalDateTime;
 import java.util.Date;
+import java.util.Objects;
 
 public class Transaction implements  Cloneable {
 
@@ -26,6 +27,23 @@ public class Transaction implements  Cloneable {
     private Integer quantity;
     private TransactionIndicator transactionIndicator;
     private BigDecimal price;
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+        Transaction that = (Transaction) o;
+        return oilID == that.oilID &&
+                Objects.equals(transactionDateTime, that.transactionDateTime) &&
+                Objects.equals(quantity, that.quantity) &&
+                transactionIndicator == that.transactionIndicator &&
+                Objects.equals(price, that.price);
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(oilID, transactionDateTime, quantity, transactionIndicator, price);
+    }
 
     public OilID getOilID() {
         return oilID;

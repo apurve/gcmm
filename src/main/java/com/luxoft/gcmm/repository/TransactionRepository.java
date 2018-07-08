@@ -9,7 +9,7 @@ public interface TransactionRepository {
 
     void addTransaction(Transaction transaction);
 
-    Transactions getTransactions();
+    List<Transaction> getTransactions();
 
     void printAll();
 }

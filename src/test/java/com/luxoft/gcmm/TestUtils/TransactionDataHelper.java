@@ -13,15 +13,14 @@ public class TransactionDataHelper {
 
     public static void populateValidTransactionDummyTransactions(TransactionRepositoryImpl transactionRepository) throws  InterruptedException {
         transactionRepository.addTransaction(new Transaction(OilID.ACC, LocalDateTime.now(), Integer.valueOf(10), TransactionIndicator.BUY, BigDecimal.valueOf(10000)));
-        Thread.sleep(500);
+        Thread.sleep(100);
         transactionRepository.addTransaction( new Transaction(OilID.REW, LocalDateTime.now(), Integer.valueOf(10), TransactionIndicator.SELL, BigDecimal.valueOf(100)));
-        Thread.sleep(500);
+        //Thread.sleep(100);
         transactionRepository.addTransaction( new Transaction(OilID.TIM, LocalDateTime.now(), Integer.valueOf(10), TransactionIndicator.SELL, BigDecimal.valueOf(107770)));
-        Thread.sleep(500);
+        //Thread.sleep(100);
         transactionRepository.addTransaction( new Transaction(OilID.BWO, LocalDateTime.now(), Integer.valueOf(10), TransactionIndicator.BUY, BigDecimal.valueOf(11070)));
-        Thread.sleep(500);
+        Thread.sleep(100);
         transactionRepository.addTransaction( new Transaction(OilID.QFC, LocalDateTime.now(), Integer.valueOf(10), TransactionIndicator.BUY, BigDecimal.valueOf(100)));
-        Thread.sleep(500);
     }
 
 }

@@ -22,7 +22,7 @@ public class Transactions implements Cloneable {
         this.transactions.forEach(transaction -> {
             transactionsList.add(transaction.clone());
         });
-
+        transactions.setTransactions(transactionsList);
         return transactions;
     }
 

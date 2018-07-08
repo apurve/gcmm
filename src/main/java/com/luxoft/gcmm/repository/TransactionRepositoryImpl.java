@@ -4,6 +4,7 @@ import com.luxoft.gcmm.model.Transaction;
 import com.luxoft.gcmm.model.Transactions;
 
 import java.util.ArrayList;
+import java.util.List;
 
 public class TransactionRepositoryImpl implements TransactionRepository {
 
@@ -21,8 +22,8 @@ public class TransactionRepositoryImpl implements TransactionRepository {
     }
 
     @Override
-    public Transactions getTransactions() {
-        return transactions.clone();
+    public List<Transaction> getTransactions() {
+        return transactions.clone().getTransactions();
     }
 
     @Override

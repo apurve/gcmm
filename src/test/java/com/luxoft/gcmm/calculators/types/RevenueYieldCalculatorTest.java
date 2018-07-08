@@ -6,10 +6,11 @@ import org.junit.Before;
 import org.junit.Test;
 
 import java.math.BigDecimal;
+import java.math.RoundingMode;
 
 public class RevenueYieldCalculatorTest {
 
-    RevenueYieldCalculator revenueYieldCalculator = null;
+    private RevenueYieldCalculator revenueYieldCalculator = null;
 
     @Before
     public void initialize() {
@@ -30,13 +31,17 @@ public class RevenueYieldCalculatorTest {
     @Test
     public void testRevenueYieldForPositivePrice() {
         BigDecimal revenueYield = revenueYieldCalculator.calculate(OilID.ACC.get(), BigDecimal.valueOf(10.0));
-        Assert.assertEquals(BigDecimal.valueOf(0.1), revenueYield);
+        BigDecimal expectedRevenueYield = new BigDecimal("0.100");
+        expectedRevenueYield.setScale(3, RoundingMode.HALF_UP);
+        Assert.assertEquals(expectedRevenueYield, revenueYield);
     }
 
     @Test
     public void testRevenueYieldForPremiumOil() {
         BigDecimal revenueYield = revenueYieldCalculator.calculate(OilID.TIM.get(), BigDecimal.valueOf(10.0));
-        Assert.assertEquals(BigDecimal.valueOf(0.777), revenueYield);
+        BigDecimal expectedRevenueYield = new BigDecimal("0.777");
+        expectedRevenueYield.setScale(3, RoundingMode.HALF_UP);
+        Assert.assertEquals(expectedRevenueYield, revenueYield);
     }
 
 }

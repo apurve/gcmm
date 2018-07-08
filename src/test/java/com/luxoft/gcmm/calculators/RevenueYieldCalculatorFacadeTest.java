@@ -7,8 +7,9 @@ import org.junit.Before;
 import org.junit.Test;
 
 import java.math.BigDecimal;
+import java.math.RoundingMode;
 
-public class CalculatorFacadeTest {
+public class RevenueYieldCalculatorFacadeTest {
 
     CalculatorFacade calculatorFacade;
 
@@ -21,13 +22,11 @@ public class CalculatorFacadeTest {
     @Test(expected = IllegalArgumentException.class)
     public void testCalculateRevenueYieldWhenNull(){
         calculatorFacade.calculate(null,null);
-
     }
 
     @Test(expected = IllegalArgumentException.class)
     public void testCalculateRevenueYieldWhenPriceZero(){
         calculatorFacade.calculate(FormulaeTypes.REVENUE_YIELD, BigDecimal.ZERO);
-
     }
 
     @Test
@@ -42,28 +41,36 @@ public class CalculatorFacadeTest {
         assertRevenueYieldOfBWOOil((RevenueYield) calculationOutput);
         assertRevenueYieldOfTIMOil((RevenueYield) calculationOutput);
         assertRevenueYieldOfQFCOil((RevenueYield) calculationOutput);
-
     }
 
     private void assertRevenueYieldOfQFCOil(RevenueYield calculationOutput) {
-        Assert.assertEquals(BigDecimal.valueOf(22), calculationOutput.getRevenueYieldList().get(4));
+        BigDecimal expectedRevenueYield = new BigDecimal("22.000");
+        expectedRevenueYield.setScale(3, RoundingMode.HALF_UP);
+        Assert.assertEquals(expectedRevenueYield, calculationOutput.getRevenueYieldList().get(4));
     }
 
     private void assertRevenueYieldOfTIMOil(RevenueYield calculationOutput) {
-        Assert.assertEquals(BigDecimal.valueOf(7.77), calculationOutput.getRevenueYieldList().get(3));
+        BigDecimal expectedRevenueYield = new BigDecimal("7.770");
+        expectedRevenueYield.setScale(3, RoundingMode.HALF_UP);
+        Assert.assertEquals(expectedRevenueYield, calculationOutput.getRevenueYieldList().get(3));
     }
 
     private void assertRevenueYieldOfBWOOil(RevenueYield calculationOutput) {
-        Assert.assertEquals(BigDecimal.valueOf(17), calculationOutput.getRevenueYieldList().get(2));
+        BigDecimal expectedRevenueYield = new BigDecimal("17.000");
+        expectedRevenueYield.setScale(3, RoundingMode.HALF_UP);
+        Assert.assertEquals(expectedRevenueYield, calculationOutput.getRevenueYieldList().get(2));
     }
 
     private void assertRevenueYieldOfREWOil(RevenueYield calculationOutput) {
-        Assert.assertEquals(BigDecimal.valueOf(7), calculationOutput.getRevenueYieldList().get(1));
+        BigDecimal expectedRevenueYield = new BigDecimal("7.000");
+        expectedRevenueYield.setScale(3, RoundingMode.HALF_UP);
+        Assert.assertEquals(expectedRevenueYield, calculationOutput.getRevenueYieldList().get(1));
     }
 
     private void assertRevenueYieldOfACCOil(RevenueYield calculationOutput) {
-        Assert.assertEquals(BigDecimal.ONE, calculationOutput.getRevenueYieldList().get(0));
+        BigDecimal expectedRevenueYield = new BigDecimal("1.000");
+        expectedRevenueYield.setScale(3, RoundingMode.HALF_UP);
+        Assert.assertEquals(expectedRevenueYield, calculationOutput.getRevenueYieldList().get(0));
     }
-
 
 }
