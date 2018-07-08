@@ -1,40 +1,35 @@
 package com.luxoft.gcmm.model;
 
 
+import com.luxoft.gcmm.model.types.OilID;
+import org.junit.Assert;
 import org.junit.Before;
 import org.junit.Test;
 
 public class OilTest {
 
     private Oil acc = null;
-    //private Oil accPremium = null;
     private Oil rew = null;
 
     @Before
     public void initializeOils() {
-        acc = OilFactory.ACC.get();
-        //accPremium = OilFactory.ACC.get();
-        rew = OilFactory.REW.get();
+        acc = OilID.ACC.get();
+        rew = OilID.REW.get();
     }
 
     @Test
     public void testHashCodeOnSameOils() {
-        assert acc.hashCode() == acc.hashCode();
+        Assert.assertEquals(acc.hashCode(), acc.hashCode());
     }
 
     @Test
     public void testHashCodeOnDifferentOils() {
-        assert acc.hashCode() != rew.hashCode();
+        Assert.assertNotEquals(acc.hashCode() , rew.hashCode());
     }
-
-    /*@Test
-    public void testEqualsOnDifferentOilTypes() {
-        assert !acc.equals(accPremium);
-    }*/
 
     @Test
     public void testEqualsOnDifferentOils() {
-        assert !acc.equals(rew);
+        Assert.assertFalse(acc.equals(rew));
     }
 
 }

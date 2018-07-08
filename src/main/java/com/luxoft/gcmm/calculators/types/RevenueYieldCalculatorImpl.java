@@ -1,11 +1,9 @@
 package com.luxoft.gcmm.calculators.types;
 
-import com.luxoft.gcmm.calculators.results.RevenueYield;
 import com.luxoft.gcmm.model.Oil;
-import com.luxoft.gcmm.model.OilType;
+import com.luxoft.gcmm.model.types.OilType;
 
 import java.math.BigDecimal;
-import java.util.List;
 
 public class RevenueYieldCalculatorImpl implements RevenueYieldCalculator {
 
@@ -35,7 +33,7 @@ public class RevenueYieldCalculatorImpl implements RevenueYieldCalculator {
     }
 
     private BigDecimal computeRevenueYieldForPremiumOil(BigDecimal price, Oil oil) {
-        return (oil.getFixedRevenue().multiply(oil.getVariableRevenue())).divide(price);
+        return (oil.getBarrelValue().multiply(oil.getVariableRevenue())).divide(price.multiply(BigDecimal.valueOf(100)));
     }
 
     private BigDecimal computeRevenueYieldForStandardOil(BigDecimal price, Oil oil) {

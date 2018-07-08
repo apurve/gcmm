@@ -1,12 +1,15 @@
 package com.luxoft.gcmm.model;
 
+import com.luxoft.gcmm.model.types.OilID;
+import com.luxoft.gcmm.model.types.OilType;
+
 import java.io.Serializable;
 import java.math.BigDecimal;
 import java.util.Objects;
 
 public class Oil implements Serializable {
 
-    private String id;
+    private OilID id;
 
     private OilType type;
 
@@ -16,7 +19,7 @@ public class Oil implements Serializable {
 
     private BigDecimal barrelValue;
 
-    public Oil(String id, OilType oilType) {
+    public Oil(OilID id, OilType oilType) {
         super();
         this.id = id;
         this.type = oilType;
@@ -39,11 +42,11 @@ public class Oil implements Serializable {
         return Objects.hash(id, type);
     }
 
-    public String getId() {
+    public OilID getId() {
         return id;
     }
 
-    public void setId(String id) {
+    public void setId(OilID id) {
         this.id = id;
     }
 
