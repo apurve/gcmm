@@ -1,0 +1,8 @@
+/.idea
+/*.iml
+/target/classes/com/luxoft/gcmm/calculators/*.class
+/target/classes/com/luxoft/gcmm/calculators/results/*.class
+/target/maven-status/maven-compiler-plugin/compile/default-compile/*.lst
+*.class
+*.lst
+target
