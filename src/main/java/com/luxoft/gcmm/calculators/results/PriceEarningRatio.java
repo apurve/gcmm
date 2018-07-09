@@ -1,20 +1,30 @@
 package com.luxoft.gcmm.calculators.results;
 
+import com.luxoft.gcmm.model.types.OilID;
+
 import java.math.BigDecimal;
-import java.util.ArrayList;
-import java.util.List;
+import java.util.HashMap;
+import java.util.Map;
 
 public class PriceEarningRatio implements CalculationOutput {
 
-    private final List<BigDecimal> priceEarningRatioList = new ArrayList<BigDecimal>();
+    private final Map<OilID,BigDecimal> priceEarningRatios = new HashMap<>();
 
-    public List<BigDecimal> getPriceEarningRatioList() {
-        return priceEarningRatioList;
+    public Map<OilID,BigDecimal> getPriceEarningRatios() {
+        return priceEarningRatios;
     }
 
-    public PriceEarningRatio addPriceEarningRatio(BigDecimal revenueYield) {
-        priceEarningRatioList.add(revenueYield);
+    public PriceEarningRatio addPriceEarningRatio(OilID oilID,BigDecimal revenueYield) {
+        priceEarningRatios.put(oilID,revenueYield);
         return this;
+    }
+
+
+    @Override
+    public String toString() {
+        return "PriceEarningRatio{" +
+                "priceEarningRatios=" + priceEarningRatios +
+                '}';
     }
 
 }

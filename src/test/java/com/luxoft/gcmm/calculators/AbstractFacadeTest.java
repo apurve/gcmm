@@ -1,15 +1,19 @@
 package com.luxoft.gcmm.calculators;
 
+import com.luxoft.gcmm.model.Transactions;
+import com.luxoft.gcmm.testutils.TransactionDataHelper;
 import org.junit.Before;
 import org.junit.Test;
 
 public abstract class AbstractFacadeTest {
 
-    GCMMOperationsFacade gcmmOperationsFacade;
+    public GCMMOperationsFacade gcmmOperationsFacade;
+
 
     @Before
-    public void initialize() {
+    public void initialize() throws InterruptedException {
         gcmmOperationsFacade = new GCMMOperationsFacade();
+
     }
 
     @Test(expected = IllegalArgumentException.class)

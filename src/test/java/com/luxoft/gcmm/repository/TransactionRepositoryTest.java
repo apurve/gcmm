@@ -8,22 +8,13 @@ import org.junit.Test;
 import java.math.BigDecimal;
 import java.util.List;
 
-import static com.luxoft.gcmm.TestUtils.TransactionDataHelper.populateFiveDummyTransactions;
-
 public class TransactionRepositoryTest {
 
     TransactionRepository transactionRepository = null;
 
     @Before
     public void initialize() throws InterruptedException {
-        transactionRepository = new TransactionRepositoryImpl();
-        populateFiveDummyTransactions(transactionRepository);
-        //transactionRepository.printAll();
-    }
-
-    @Test
-    public void testTransactionCountInRepository(){
-        Assert.assertEquals(5, transactionRepository.getTransactions().getTransactionList().size());
+        transactionRepository = TransactionRepositoryImpl.getInstance();
     }
 
     @Test

@@ -2,15 +2,13 @@ package com.luxoft.gcmm.calculators;
 
 import com.luxoft.gcmm.calculators.results.CalculationOutput;
 import com.luxoft.gcmm.calculators.results.VolumeWeightedPrice;
-import com.luxoft.gcmm.repository.TransactionRepository;
-import com.luxoft.gcmm.repository.TransactionRepositoryImpl;
+import com.luxoft.gcmm.model.Transaction;
+import com.luxoft.gcmm.model.types.OilID;
+import com.luxoft.gcmm.testutils.TransactionDataHelper;
 import com.luxoft.gcmm.utils.BigDecimalWithThreeDecimals;
 import org.junit.Assert;
-import org.junit.Test;
 
-import java.math.BigDecimal;
-
-import static com.luxoft.gcmm.TestUtils.TransactionDataHelper.populateFiveDummyTransactions;
+import java.util.List;
 
 public class VolumeWeightedPriceFacadeTest extends AbstractFacadeTest {
 
@@ -19,13 +17,15 @@ public class VolumeWeightedPriceFacadeTest extends AbstractFacadeTest {
         populateTransactionRepository();
         CalculationOutput calculationOutput = gcmmOperationsFacade.calculate(GCMMOperations.COMPUTE_VOLUME_WEIGHTED_PRICE, null, null);
         Assert.assertTrue(calculationOutput instanceof VolumeWeightedPrice);
-        Assert.assertNotNull((((VolumeWeightedPrice) calculationOutput).getVolumeWeightedPrice()));
-        Assert.assertEquals(BigDecimalWithThreeDecimals.valueOf("67.400"),(((VolumeWeightedPrice) calculationOutput).getVolumeWeightedPrice()));
+        Assert.assertNotNull((((VolumeWeightedPrice) calculationOutput).getVolumeWeightedPriceMap()));
+        Assert.assertEquals(BigDecimalWithThreeDecimals.valueOf("100.000"),(((VolumeWeightedPrice) calculationOutput).getVolumeWeightedPriceMap().get(OilID.ACC)));
     }
 
     private void populateTransactionRepository() throws InterruptedException {
-        TransactionRepository transactionRepository = new TransactionRepositoryImpl();
-        populateFiveDummyTransactions(transactionRepository);
+        List<Transaction> transactionList = TransactionDataHelper.getFiveDummyTransactions();
+        transactionList.forEach(transaction -> {
+            gcmmOperationsFacade.calculate(GCMMOperations.TRANSACT, null, transaction);
+        });
     }
 
 }

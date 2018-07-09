@@ -2,6 +2,7 @@ package com.luxoft.gcmm.calculators;
 
 import com.luxoft.gcmm.calculators.results.CalculationOutput;
 import com.luxoft.gcmm.calculators.results.RevenueYield;
+import com.luxoft.gcmm.model.types.OilID;
 import com.luxoft.gcmm.utils.BigDecimalWithThreeDecimals;
 import org.junit.Assert;
 import org.junit.Test;
@@ -30,23 +31,23 @@ public class RevenueYieldFacadeTest extends AbstractFacadeTest {
     }
 
     private void assertRevenueYieldOfQFCOil(RevenueYield calculationOutput) {
-        Assert.assertEquals(BigDecimalWithThreeDecimals.valueOf("22.000"), calculationOutput.getRevenueYieldList().get(4));
+        Assert.assertEquals(BigDecimalWithThreeDecimals.valueOf("22.000"), calculationOutput.getRevenueYieldList().get((OilID.QFC)));
     }
 
     private void assertRevenueYieldOfTIMOil(RevenueYield calculationOutput) {
-        Assert.assertEquals(BigDecimalWithThreeDecimals.valueOf("7.770"), calculationOutput.getRevenueYieldList().get(3));
+        Assert.assertEquals(BigDecimalWithThreeDecimals.valueOf("7.770"), calculationOutput.getRevenueYieldList().get((OilID.TIM)));
     }
 
     private void assertRevenueYieldOfBWOOil(RevenueYield calculationOutput) {
-        Assert.assertEquals(BigDecimalWithThreeDecimals.valueOf("17.000"), calculationOutput.getRevenueYieldList().get(2));
+        Assert.assertEquals(BigDecimalWithThreeDecimals.valueOf("17.000"), calculationOutput.getRevenueYieldList().get(OilID.BWO));
     }
 
     private void assertRevenueYieldOfREWOil(RevenueYield calculationOutput) {
-        Assert.assertEquals(BigDecimalWithThreeDecimals.valueOf("7.000"), calculationOutput.getRevenueYieldList().get(1));
+        Assert.assertEquals(BigDecimalWithThreeDecimals.valueOf("7.000"), calculationOutput.getRevenueYieldList().get((OilID.REW)));
     }
 
     private void assertRevenueYieldOfACCOil(RevenueYield calculationOutput) {
-        Assert.assertEquals(BigDecimalWithThreeDecimals.valueOf("1.000"), calculationOutput.getRevenueYieldList().get(0));
+        Assert.assertEquals(BigDecimalWithThreeDecimals.valueOf("1.000"), calculationOutput.getRevenueYieldList().get((OilID.ACC)));
     }
 
 }
