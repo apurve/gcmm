@@ -23,4 +23,5 @@ public class IntegrationTest extends AbstractFacadeTest {
         System.out.println(gcmmOperationsFacade.calculate(GCMMOperations.COMPUTE_VOLUME_WEIGHTED_PRICE, null, null));
         System.out.println(gcmmOperationsFacade.calculate(GCMMOperations.COMPUTE_INVENTORY_INDEX, null, null));
     }
+
 }
