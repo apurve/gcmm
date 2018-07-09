@@ -2,6 +2,7 @@ package com.luxoft.gcmm.calculators;
 
 import com.luxoft.gcmm.calculators.results.CalculationOutput;
 import com.luxoft.gcmm.calculators.results.RevenueYield;
+import com.luxoft.gcmm.utils.BigDecimalWithThreeDecimals;
 import org.junit.Assert;
 import org.junit.Before;
 import org.junit.Test;
@@ -44,33 +45,23 @@ public class RevenueYieldCalculatorFacadeTest {
     }
 
     private void assertRevenueYieldOfQFCOil(RevenueYield calculationOutput) {
-        BigDecimal expectedRevenueYield = new BigDecimal("22.000");
-        expectedRevenueYield.setScale(3, RoundingMode.HALF_UP);
-        Assert.assertEquals(expectedRevenueYield, calculationOutput.getRevenueYieldList().get(4));
+        Assert.assertEquals(BigDecimalWithThreeDecimals.valueOf("22.000"), calculationOutput.getRevenueYieldList().get(4));
     }
 
     private void assertRevenueYieldOfTIMOil(RevenueYield calculationOutput) {
-        BigDecimal expectedRevenueYield = new BigDecimal("7.770");
-        expectedRevenueYield.setScale(3, RoundingMode.HALF_UP);
-        Assert.assertEquals(expectedRevenueYield, calculationOutput.getRevenueYieldList().get(3));
+        Assert.assertEquals(BigDecimalWithThreeDecimals.valueOf("7.770"), calculationOutput.getRevenueYieldList().get(3));
     }
 
     private void assertRevenueYieldOfBWOOil(RevenueYield calculationOutput) {
-        BigDecimal expectedRevenueYield = new BigDecimal("17.000");
-        expectedRevenueYield.setScale(3, RoundingMode.HALF_UP);
-        Assert.assertEquals(expectedRevenueYield, calculationOutput.getRevenueYieldList().get(2));
+        Assert.assertEquals(BigDecimalWithThreeDecimals.valueOf("17.000"), calculationOutput.getRevenueYieldList().get(2));
     }
 
     private void assertRevenueYieldOfREWOil(RevenueYield calculationOutput) {
-        BigDecimal expectedRevenueYield = new BigDecimal("7.000");
-        expectedRevenueYield.setScale(3, RoundingMode.HALF_UP);
-        Assert.assertEquals(expectedRevenueYield, calculationOutput.getRevenueYieldList().get(1));
+        Assert.assertEquals(BigDecimalWithThreeDecimals.valueOf("7.000"), calculationOutput.getRevenueYieldList().get(1));
     }
 
     private void assertRevenueYieldOfACCOil(RevenueYield calculationOutput) {
-        BigDecimal expectedRevenueYield = new BigDecimal("1.000");
-        expectedRevenueYield.setScale(3, RoundingMode.HALF_UP);
-        Assert.assertEquals(expectedRevenueYield, calculationOutput.getRevenueYieldList().get(0));
+        Assert.assertEquals(BigDecimalWithThreeDecimals.valueOf("1.000"), calculationOutput.getRevenueYieldList().get(0));
     }
 
 }

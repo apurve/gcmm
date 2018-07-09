@@ -1,6 +1,7 @@
 package com.luxoft.gcmm.calculators.types;
 
 import com.luxoft.gcmm.model.types.OilID;
+import com.luxoft.gcmm.utils.BigDecimalWithThreeDecimals;
 import org.junit.Assert;
 import org.junit.Before;
 import org.junit.Test;
@@ -30,17 +31,13 @@ public class PriceEarningRatioCalculatorTest {
     @Test
     public void testPriceEarningRatioForPositivePrice() {
         BigDecimal priceEarningRatio = priceEarningRatioCalculator.calculate(OilID.ACC.get(), BigDecimal.valueOf(10.0));
-        BigDecimal expectedPriceEarningRatio = new BigDecimal("100.000");
-        expectedPriceEarningRatio.setScale(3, RoundingMode.HALF_UP);
-        Assert.assertEquals(expectedPriceEarningRatio, priceEarningRatio);
+        Assert.assertEquals(BigDecimalWithThreeDecimals.valueOf("100.000"), priceEarningRatio);
     }
 
     @Test
     public void testPriceEarningRatioForPremiumOil() {
         BigDecimal priceEarningRatio = priceEarningRatioCalculator.calculate(OilID.TIM.get(), BigDecimal.valueOf(10.0));
-        BigDecimal expectedPriceEarningRatio = new BigDecimal("12.870");
-        expectedPriceEarningRatio.setScale(3, RoundingMode.HALF_UP);
-        Assert.assertEquals(expectedPriceEarningRatio, priceEarningRatio);
+        Assert.assertEquals(BigDecimalWithThreeDecimals.valueOf("12.870"), priceEarningRatio);
     }
 
 }

@@ -2,6 +2,7 @@ package com.luxoft.gcmm.calculators.types;
 
 import com.luxoft.gcmm.repository.TransactionRepository;
 import com.luxoft.gcmm.repository.TransactionRepositoryImpl;
+import com.luxoft.gcmm.utils.BigDecimalWithThreeDecimals;
 import org.junit.Assert;
 import org.junit.Before;
 import org.junit.Test;
@@ -26,9 +27,7 @@ public class VolumeWeightedOilPriceCalculatorTest {
     @Test
     public void testVolumeWeightedPriceComputation() {
         BigDecimal volumeWeightedOilPrice = volumeWeightedOilPriceCalculator.calculate(transactionRepository.getTransactions());
-        BigDecimal expectedvolumeWeightedOilPrice = new BigDecimal("67.400");
-        expectedvolumeWeightedOilPrice.setScale(3, RoundingMode.HALF_UP);
-        Assert.assertEquals(expectedvolumeWeightedOilPrice, volumeWeightedOilPrice);
+        Assert.assertEquals(BigDecimalWithThreeDecimals.valueOf("67.400"), volumeWeightedOilPrice);
     }
 
 }

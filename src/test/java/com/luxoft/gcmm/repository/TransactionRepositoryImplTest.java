@@ -29,7 +29,7 @@ public class TransactionRepositoryImplTest {
     @Test
     public void testTransactionRepositoryIsNotCorrupted(){
         List<Transaction> transactions = transactionRepository.getTransactions().getTransactionList();
-        transactions.get(0).setPrice(BigDecimal.valueOf(10000));
+        transactions.get(0).setPrice(BigDecimal.valueOf(12345));
         Assert.assertNotEquals(transactions.get(0).getPrice(),
                 transactionRepository.getTransactions().getTransactionList().get(0).getPrice());
     }

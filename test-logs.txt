@@ -14,7 +14,7 @@
 [INFO] --- maven-compiler-plugin:3.7.0:compile (default-compile) @ gcmm ---
 [INFO] Changes detected - recompiling the module!
 [WARNING] File encoding has not been set, using platform encoding Cp1252, i.e. build is platform dependent!
-[INFO] Compiling 19 source files to D:\GCMM\gcmm\target\classes
+[INFO] Compiling 20 source files to D:\GCMM\gcmm\target\classes
 [INFO] 
 [INFO] --- maven-resources-plugin:2.6:testResources (default-testResources) @ gcmm ---
 [WARNING] Using platform encoding (Cp1252 actually) to copy filtered resources, i.e. build is platform dependent!
@@ -32,26 +32,28 @@
  T E S T S
 -------------------------------------------------------
 Running com.luxoft.gcmm.calculators.PriceEarningRatioCalculatorFacadeTest
-Tests run: 3, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 0.067 sec
+Tests run: 3, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 0.08 sec
 Running com.luxoft.gcmm.calculators.RevenueYieldCalculatorFacadeTest
 Tests run: 3, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 0 sec
 Running com.luxoft.gcmm.calculators.types.PriceEarningRatioCalculatorTest
 Tests run: 4, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 0 sec
 Running com.luxoft.gcmm.calculators.types.RevenueYieldCalculatorTest
-Tests run: 4, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 0.001 sec
+Tests run: 4, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 0 sec
+Running com.luxoft.gcmm.calculators.types.VolumeWeightedOilPriceCalculatorTest
+Tests run: 1, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 0.17 sec
 Running com.luxoft.gcmm.model.OilTest
 Tests run: 3, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 0 sec
 Running com.luxoft.gcmm.repository.TransactionRepositoryImplTest
-Tests run: 2, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 0.37 sec
+Tests run: 2, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 0.002 sec
 
 Results :
 
-Tests run: 19, Failures: 0, Errors: 0, Skipped: 0
+Tests run: 20, Failures: 0, Errors: 0, Skipped: 0
 
 [INFO] ------------------------------------------------------------------------
 [INFO] BUILD SUCCESS
 [INFO] ------------------------------------------------------------------------
-[INFO] Total time: 4.547 s
-[INFO] Finished at: 2018-07-09T01:45:00+05:30
+[INFO] Total time: 11.870 s
+[INFO] Finished at: 2018-07-09T10:49:51+05:30
 [INFO] Final Memory: 16M/52M
 [INFO] ------------------------------------------------------------------------
