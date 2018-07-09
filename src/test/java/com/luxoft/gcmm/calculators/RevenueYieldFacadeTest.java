@@ -4,35 +4,20 @@ import com.luxoft.gcmm.calculators.results.CalculationOutput;
 import com.luxoft.gcmm.calculators.results.RevenueYield;
 import com.luxoft.gcmm.utils.BigDecimalWithThreeDecimals;
 import org.junit.Assert;
-import org.junit.Before;
 import org.junit.Test;
 
 import java.math.BigDecimal;
-import java.math.RoundingMode;
 
-public class RevenueYieldCalculatorFacadeTest {
-
-    CalculatorFacade calculatorFacade;
-
-
-    @Before
-    public void initialize() {
-        calculatorFacade = new CalculatorFacade();
-    }
+public class RevenueYieldFacadeTest extends AbstractFacadeTest {
 
     @Test(expected = IllegalArgumentException.class)
-    public void testCalculateRevenueYieldWhenNull(){
-        calculatorFacade.calculate(null,null);
+    public void testFacadeWhenPriceZero(){
+        gcmmOperationsFacade.calculate(GCMMOperations.COMPUTE_REVENUE_YIELD, BigDecimal.ZERO, null);
     }
 
-    @Test(expected = IllegalArgumentException.class)
-    public void testCalculateRevenueYieldWhenPriceZero(){
-        calculatorFacade.calculate(FormulaeTypes.REVENUE_YIELD, BigDecimal.ZERO);
-    }
-
-    @Test
-    public void testCalculateRevenueYieldWhenPriceIsValid(){
-        CalculationOutput calculationOutput =  calculatorFacade.calculate(FormulaeTypes.REVENUE_YIELD, BigDecimal.ONE);
+    @Override
+    public void testFacadeWithValidInput(){
+        CalculationOutput calculationOutput =  gcmmOperationsFacade.calculate(GCMMOperations.COMPUTE_REVENUE_YIELD, BigDecimal.ONE, null);
         Assert.assertTrue(calculationOutput instanceof RevenueYield);
         Assert.assertNotNull((((RevenueYield) calculationOutput).getRevenueYieldList()));
         Assert.assertEquals(5,(((RevenueYield) calculationOutput)).getRevenueYieldList().size());

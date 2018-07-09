@@ -14,7 +14,7 @@
 [INFO] --- maven-compiler-plugin:3.7.0:compile (default-compile) @ gcmm ---
 [INFO] Changes detected - recompiling the module!
 [WARNING] File encoding has not been set, using platform encoding Cp1252, i.e. build is platform dependent!
-[INFO] Compiling 20 source files to D:\GCMM\gcmm\target\classes
+[INFO] Compiling 21 source files to D:\GCMM\gcmm\target\classes
 [INFO] 
 [INFO] --- maven-resources-plugin:2.6:testResources (default-testResources) @ gcmm ---
 [WARNING] Using platform encoding (Cp1252 actually) to copy filtered resources, i.e. build is platform dependent!
@@ -23,7 +23,7 @@
 [INFO] --- maven-compiler-plugin:3.7.0:testCompile (default-testCompile) @ gcmm ---
 [INFO] Changes detected - recompiling the module!
 [WARNING] File encoding has not been set, using platform encoding Cp1252, i.e. build is platform dependent!
-[INFO] Compiling 8 source files to D:\GCMM\gcmm\target\test-classes
+[INFO] Compiling 10 source files to D:\GCMM\gcmm\target\test-classes
 [INFO] 
 [INFO] --- maven-surefire-plugin:2.12.4:test (default-test) @ gcmm ---
 [INFO] Surefire report directory: D:\GCMM\gcmm\target\surefire-reports
@@ -31,29 +31,31 @@
 -------------------------------------------------------
  T E S T S
 -------------------------------------------------------
-Running com.luxoft.gcmm.calculators.PriceEarningRatioCalculatorFacadeTest
-Tests run: 3, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 0.08 sec
-Running com.luxoft.gcmm.calculators.RevenueYieldCalculatorFacadeTest
+Running com.luxoft.gcmm.calculators.PriceEarningRatioFacadeTest
+Tests run: 3, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 0.076 sec
+Running com.luxoft.gcmm.calculators.RevenueYieldFacadeTest
 Tests run: 3, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 0 sec
 Running com.luxoft.gcmm.calculators.types.PriceEarningRatioCalculatorTest
 Tests run: 4, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 0 sec
 Running com.luxoft.gcmm.calculators.types.RevenueYieldCalculatorTest
 Tests run: 4, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 0 sec
 Running com.luxoft.gcmm.calculators.types.VolumeWeightedOilPriceCalculatorTest
-Tests run: 1, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 0.17 sec
+Tests run: 1, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 0.187 sec
+Running com.luxoft.gcmm.calculators.VolumeWeightedPriceFacadeTest
+Tests run: 2, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 0.001 sec
 Running com.luxoft.gcmm.model.OilTest
-Tests run: 3, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 0 sec
-Running com.luxoft.gcmm.repository.TransactionRepositoryImplTest
-Tests run: 2, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 0.002 sec
+Tests run: 3, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 0.001 sec
+Running com.luxoft.gcmm.repository.TransactionRepositoryTest
+Tests run: 2, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 0 sec
 
 Results :
 
-Tests run: 20, Failures: 0, Errors: 0, Skipped: 0
+Tests run: 22, Failures: 0, Errors: 0, Skipped: 0
 
 [INFO] ------------------------------------------------------------------------
 [INFO] BUILD SUCCESS
 [INFO] ------------------------------------------------------------------------
-[INFO] Total time: 11.870 s
-[INFO] Finished at: 2018-07-09T10:49:51+05:30
+[INFO] Total time: 4.871 s
+[INFO] Finished at: 2018-07-09T12:34:23+05:30
 [INFO] Final Memory: 16M/52M
 [INFO] ------------------------------------------------------------------------

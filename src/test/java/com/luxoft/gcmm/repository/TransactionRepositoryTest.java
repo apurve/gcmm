@@ -10,7 +10,7 @@ import java.util.List;
 
 import static com.luxoft.gcmm.TestUtils.TransactionDataHelper.populateFiveDummyTransactions;
 
-public class TransactionRepositoryImplTest {
+public class TransactionRepositoryTest {
 
     TransactionRepository transactionRepository = null;
 

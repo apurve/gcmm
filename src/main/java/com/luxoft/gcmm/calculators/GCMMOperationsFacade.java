@@ -3,39 +3,49 @@ package com.luxoft.gcmm.calculators;
 import com.luxoft.gcmm.calculators.results.CalculationOutput;
 import com.luxoft.gcmm.calculators.results.PriceEarningRatio;
 import com.luxoft.gcmm.calculators.results.RevenueYield;
-import com.luxoft.gcmm.calculators.types.PriceEarningRatioCalculator;
-import com.luxoft.gcmm.calculators.types.PriceEarningRatioCalculatorImpl;
-import com.luxoft.gcmm.calculators.types.RevenueYieldCalculator;
-import com.luxoft.gcmm.calculators.types.RevenueYieldCalculatorImpl;
+import com.luxoft.gcmm.calculators.results.VolumeWeightedPrice;
+import com.luxoft.gcmm.calculators.types.*;
+import com.luxoft.gcmm.model.Transaction;
 import com.luxoft.gcmm.model.types.OilID;
+import com.luxoft.gcmm.repository.TransactionRepository;
+import com.luxoft.gcmm.repository.TransactionRepositoryImpl;
 
 import java.math.BigDecimal;
 import java.util.Arrays;
 
-public class CalculatorFacade {
+public class GCMMOperationsFacade {
 
     private RevenueYieldCalculator revenueYieldCalculator = new RevenueYieldCalculatorImpl();
 
     private PriceEarningRatioCalculator priceEarningRatioCalculator = new PriceEarningRatioCalculatorImpl();
 
-    public CalculationOutput calculate(FormulaeTypes formulae, BigDecimal price) {
+    private VolumeWeightedOilPriceCalculator volumeWeightedOilPriceCalculator = new VolumeWeightedOilPriceCalculatorImpl();
+
+    private TransactionRepository transactionRepository = new TransactionRepositoryImpl();
+
+    public CalculationOutput calculate(GCMMOperations operation, BigDecimal price, Transaction transaction) {
         CalculationOutput calculationOutput = null;
-        if(formulae==null){
+        if(operation==null){
             throw new IllegalArgumentException("Formulae cannot be null");
         }
-        switch (formulae) {
-            case REVENUE_YIELD: {
+        switch (operation) {
+            case COMPUTE_REVENUE_YIELD: {
                 calculationOutput = computeRevenueYield(price);
                 break;
             }
-            case PRICE_EARNING_RATIO: {
+            case COMPUTE_PRICE_EARNING_RATIO: {
                 calculationOutput = computePriceEarningRatio(price);
                 break;
             }
-            case GEOMETRIC_MEAN: {
+            case TRANSACT: {
+                transact(transaction);
                 break;
             }
-            case VOLUME_WEIGHTED_OIL_PRICE: {
+            case COMPUTE_VOLUME_WEIGHTED_PRICE: {
+                calculationOutput = computeVolumeWeightedPrice();
+                break;
+            }
+            case COMPUTE_GEOMETRIC_MEAN: {
                 break;
             }
              default :{
@@ -59,6 +69,16 @@ public class CalculatorFacade {
             priceEarningRatio.addPriceEarningRatio(priceEarningRatioCalculator.calculate(oilFactory.get(), price));
         });
         return priceEarningRatio;
+    }
+
+    private VolumeWeightedPrice computeVolumeWeightedPrice() {
+        return new VolumeWeightedPrice(
+                volumeWeightedOilPriceCalculator.calculate(transactionRepository.getTransactions())
+        );
+    }
+
+    private void transact(Transaction transaction) {
+        transactionRepository.addTransaction(transaction);
     }
 
 }

@@ -4,34 +4,21 @@ import com.luxoft.gcmm.calculators.results.CalculationOutput;
 import com.luxoft.gcmm.calculators.results.PriceEarningRatio;
 import com.luxoft.gcmm.utils.BigDecimalWithThreeDecimals;
 import org.junit.Assert;
-import org.junit.Before;
 import org.junit.Test;
 
 import java.math.BigDecimal;
-import java.math.RoundingMode;
 
-public class PriceEarningRatioCalculatorFacadeTest {
-
-    CalculatorFacade calculatorFacade;
-
-    @Before
-    public void initialize() {
-        calculatorFacade = new CalculatorFacade();
-    }
+public class PriceEarningRatioFacadeTest extends AbstractFacadeTest {
 
     @Test(expected = IllegalArgumentException.class)
-    public void testCalculatePriceEarningRatioWhenNull(){
-        calculatorFacade.calculate(null,null);
+    public void testFacadeWhenPriceZero(){
+        gcmmOperationsFacade.calculate(GCMMOperations.COMPUTE_PRICE_EARNING_RATIO, BigDecimal.ZERO, null);
     }
 
-    @Test(expected = IllegalArgumentException.class)
-    public void testCalculatePriceEarningRatioWhenPriceZero(){
-        calculatorFacade.calculate(FormulaeTypes.PRICE_EARNING_RATIO, BigDecimal.ZERO);
-    }
-
-    @Test
-    public void testCalculatePriceEarningRatioWhenPriceIsValid(){
-        CalculationOutput calculationOutput =  calculatorFacade.calculate(FormulaeTypes.PRICE_EARNING_RATIO, BigDecimal.ONE);
+    @Override
+    public void testFacadeWithValidInput(){
+        CalculationOutput calculationOutput =  gcmmOperationsFacade.calculate(
+                GCMMOperations.COMPUTE_PRICE_EARNING_RATIO, BigDecimal.ONE, null);
         Assert.assertTrue(calculationOutput instanceof PriceEarningRatio);
         Assert.assertNotNull((((PriceEarningRatio) calculationOutput).getPriceEarningRatioList()));
         Assert.assertEquals(5,(((PriceEarningRatio) calculationOutput)).getPriceEarningRatioList().size());

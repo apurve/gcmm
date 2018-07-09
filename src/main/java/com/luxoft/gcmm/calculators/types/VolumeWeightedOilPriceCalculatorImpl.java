@@ -12,6 +12,9 @@ public class VolumeWeightedOilPriceCalculatorImpl implements VolumeWeightedOilPr
 
     @Override
     public BigDecimal calculate(Transactions transactions) throws IllegalArgumentException, UnsupportedOperationException {
+        if(transactions.getTransactionList() == null || transactions.getTransactionList().size() == 0) {
+            return BigDecimal.ZERO;
+        }
         DividendAndDivisorCalculator dividendAndDivisorCalculator = new DividendAndDivisorCalculator();
         transactions.getTransactionList().forEach(dividendAndDivisorCalculator);
         return dividendAndDivisorCalculator.getDividend().divide(dividendAndDivisorCalculator.getDivisor()).setScale(3, RoundingMode.HALF_UP);
