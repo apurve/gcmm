@@ -9,7 +9,7 @@ public enum OilID implements  Cloneable {
 
     ACC {
         @Override
-        public Oil get() {
+        public Oil getOil() {
             Oil acc = new Oil(OilID.ACC, OilType.STANDARD);
             acc.setFixedRevenue(BigDecimal.valueOf(1));
             acc.setBarrelValue(BigDecimal.valueOf(42));
@@ -18,7 +18,7 @@ public enum OilID implements  Cloneable {
     },
     REW {
         @Override
-        public Oil get() {
+        public Oil getOil() {
             Oil rew = new Oil(OilID.REW, OilType.STANDARD);
             rew.setFixedRevenue(BigDecimal.valueOf(7));
             rew.setBarrelValue(BigDecimal.valueOf(47));
@@ -27,7 +27,7 @@ public enum OilID implements  Cloneable {
     },
     BWO {
         @Override
-        public Oil get() {
+        public Oil getOil() {
             Oil bwo = new Oil(OilID.BWO, OilType.STANDARD);
             bwo.setFixedRevenue(BigDecimal.valueOf(17));
             bwo.setBarrelValue(BigDecimal.valueOf(61));
@@ -36,7 +36,7 @@ public enum OilID implements  Cloneable {
     },
     TIM {
         @Override
-        public Oil get() {
+        public Oil getOil() {
             Oil tim = new Oil(OilID.TIM, OilType.PREMIUM);
             tim.setFixedRevenue(BigDecimal.valueOf(5));
             tim.setBarrelValue(BigDecimal.valueOf(111));
@@ -46,7 +46,7 @@ public enum OilID implements  Cloneable {
     },
     QFC {
         @Override
-        public Oil get() {
+        public Oil getOil() {
             Oil qfc = new Oil(OilID.QFC, OilType.STANDARD);
             qfc.setFixedRevenue(BigDecimal.valueOf(22));
             qfc.setBarrelValue(BigDecimal.valueOf(123));
@@ -54,7 +54,7 @@ public enum OilID implements  Cloneable {
         }
     };
 
-    abstract public Oil get();
+    abstract public Oil getOil();
 
     public OilID toString(String value) {
         return Arrays.stream(OilID.values()).filter(oil -> oil.toString().equals(value)).findFirst().get();

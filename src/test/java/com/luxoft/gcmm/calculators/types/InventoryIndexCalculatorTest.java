@@ -11,7 +11,7 @@ import org.junit.Test;
 import java.math.BigDecimal;
 import java.util.EnumMap;
 
-public class GeometricMeanCalculatorTest {
+public class InventoryIndexCalculatorTest {
 
     private GeometricMeanCalculator geometricMeanCalculator;
     private Transactions transactions;
@@ -24,7 +24,7 @@ public class GeometricMeanCalculatorTest {
     }
 
     @Test
-    public void testGeometricMeanComputation() {
+    public void testInventoryIndexComputation() {
         EnumMap<OilID, BigDecimal> geometricMeanMap = geometricMeanCalculator.calculate(transactions);
         Assert.assertNotNull(geometricMeanMap);
         Assert.assertEquals(5, geometricMeanMap.size());

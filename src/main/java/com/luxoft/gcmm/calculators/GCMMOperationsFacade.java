@@ -22,67 +22,29 @@ public class GCMMOperationsFacade {
 
     private GeometricMeanCalculator geometricMeanCalculator = new GeometricMeanCalculatorImpl();
 
-    public CalculationOutput calculate(GCMMOperations operation, BigDecimal price, Transaction transaction) {
-        CalculationOutput calculationOutput = null;
-        if (operation == null) {
-            throw new IllegalArgumentException("Formulae cannot be null");
-        }
-        switch (operation) {
-            case COMPUTE_REVENUE_YIELD: {
-                calculationOutput = computeRevenueYield(price);
-                break;
-            }
-            case COMPUTE_PRICE_EARNING_RATIO: {
-                calculationOutput = computePriceEarningRatio(price);
-                break;
-            }
-            case TRANSACT: {
-                transact(transaction);
-                break;
-            }
-            case COMPUTE_VOLUME_WEIGHTED_PRICE: {
-                calculationOutput = computeVolumeWeightedPrice();
-                break;
-            }
-            case COMPUTE_INVENTORY_INDEX: {
-                calculationOutput = computeInventoryIndex();
-                break;
-            }
-            default: {
-                throw new IllegalArgumentException("Invalid Formulae type");
-            }
-        }
-        return calculationOutput;
-    }
-
-    private InventoryIndexes computeInventoryIndex() {
+    public InventoryIndexes computeInventoryIndex() {
         return new InventoryIndexes().addInventoryIndexes(
                 geometricMeanCalculator.calculate(transactionRepository.getTransactions()));
     }
 
-    private RevenueYield computeRevenueYield(BigDecimal price) {
+    public RevenueYield computeRevenueYield(BigDecimal price) {
         RevenueYield revenueYield = new RevenueYield();
-        Arrays.stream(OilID.values()).forEach(oilFactory -> {
-            revenueYield.addRevenueYield(oilFactory.get().getId() , revenueYieldCalculator.calculate(oilFactory.get(), price));
-        });
+        Arrays.stream(OilID.values()).forEach(oilFactory -> revenueYield.addRevenueYield(oilFactory.getOil().getId() , revenueYieldCalculator.calculate(oilFactory.getOil(), price)));
         return revenueYield;
     }
 
-    private PriceEarningRatio computePriceEarningRatio(BigDecimal price) {
+    public PriceEarningRatio computePriceEarningRatio(BigDecimal price) {
         PriceEarningRatio priceEarningRatio = new PriceEarningRatio();
-        Arrays.stream(OilID.values()).forEach(oilFactory -> {
-            priceEarningRatio.addPriceEarningRatio(oilFactory.get().getId(),priceEarningRatioCalculator.calculate(oilFactory.get(), price));
-        });
+        Arrays.stream(OilID.values()).forEach(oilID -> priceEarningRatio.addPriceEarningRatio(oilID.getOil().getId(),priceEarningRatioCalculator.calculate(oilID.getOil(), price)));
         return priceEarningRatio;
     }
 
-    private VolumeWeightedPrice computeVolumeWeightedPrice() {
-        return new VolumeWeightedPrice().addVolumeWeightedPrice(
-                volumeWeightedOilPriceCalculator.calculate(transactionRepository.getTransactions())
-        );
+    public VolumeWeightedPrice computeVolumeWeightedPrice() {
+        return new VolumeWeightedPrice(
+                volumeWeightedOilPriceCalculator.calculate(transactionRepository.getTransactions()));
     }
 
-    private void transact(Transaction transaction) {
+    public void transact(Transaction transaction) {
         transactionRepository.addTransaction(transaction);
     }
 

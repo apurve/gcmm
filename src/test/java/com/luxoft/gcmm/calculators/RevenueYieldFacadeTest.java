@@ -1,6 +1,5 @@
 package com.luxoft.gcmm.calculators;
 
-import com.luxoft.gcmm.calculators.results.CalculationOutput;
 import com.luxoft.gcmm.calculators.results.RevenueYield;
 import com.luxoft.gcmm.model.types.OilID;
 import com.luxoft.gcmm.utils.BigDecimalWithThreeDecimals;
@@ -13,41 +12,40 @@ public class RevenueYieldFacadeTest extends AbstractFacadeTest {
 
     @Test(expected = IllegalArgumentException.class)
     public void testFacadeWhenPriceZero(){
-        gcmmOperationsFacade.calculate(GCMMOperations.COMPUTE_REVENUE_YIELD, BigDecimal.ZERO, null);
+        gcmmOperationsFacade.computeRevenueYield(BigDecimal.ZERO);
     }
 
     @Override
     public void testFacadeWithValidInput(){
-        CalculationOutput calculationOutput =  gcmmOperationsFacade.calculate(GCMMOperations.COMPUTE_REVENUE_YIELD, BigDecimal.ONE, null);
-        Assert.assertTrue(calculationOutput instanceof RevenueYield);
-        Assert.assertNotNull((((RevenueYield) calculationOutput).getRevenueYieldList()));
-        Assert.assertEquals(5,(((RevenueYield) calculationOutput)).getRevenueYieldList().size());
+        RevenueYield revenueYield =  gcmmOperationsFacade.computeRevenueYield(BigDecimal.ONE);
+        Assert.assertNotNull((revenueYield.getRevenueYieldMap()));
+        Assert.assertEquals(5,(revenueYield.getRevenueYieldMap().size()));
 
-        assertRevenueYieldOfACCOil((RevenueYield) calculationOutput);
-        assertRevenueYieldOfREWOil((RevenueYield) calculationOutput);
-        assertRevenueYieldOfBWOOil((RevenueYield) calculationOutput);
-        assertRevenueYieldOfTIMOil((RevenueYield) calculationOutput);
-        assertRevenueYieldOfQFCOil((RevenueYield) calculationOutput);
+        assertRevenueYieldOfACCOil(revenueYield);
+        assertRevenueYieldOfREWOil(revenueYield);
+        assertRevenueYieldOfBWOOil(revenueYield);
+        assertRevenueYieldOfTIMOil(revenueYield);
+        assertRevenueYieldOfQFCOil(revenueYield);
     }
 
     private void assertRevenueYieldOfQFCOil(RevenueYield calculationOutput) {
-        Assert.assertEquals(BigDecimalWithThreeDecimals.valueOf("22.000"), calculationOutput.getRevenueYieldList().get((OilID.QFC)));
+        Assert.assertEquals(BigDecimalWithThreeDecimals.valueOf("22.000"), calculationOutput.getRevenueYieldMap().get((OilID.QFC)));
     }
 
     private void assertRevenueYieldOfTIMOil(RevenueYield calculationOutput) {
-        Assert.assertEquals(BigDecimalWithThreeDecimals.valueOf("7.770"), calculationOutput.getRevenueYieldList().get((OilID.TIM)));
+        Assert.assertEquals(BigDecimalWithThreeDecimals.valueOf("7.770"), calculationOutput.getRevenueYieldMap().get((OilID.TIM)));
     }
 
     private void assertRevenueYieldOfBWOOil(RevenueYield calculationOutput) {
-        Assert.assertEquals(BigDecimalWithThreeDecimals.valueOf("17.000"), calculationOutput.getRevenueYieldList().get(OilID.BWO));
+        Assert.assertEquals(BigDecimalWithThreeDecimals.valueOf("17.000"), calculationOutput.getRevenueYieldMap().get(OilID.BWO));
     }
 
     private void assertRevenueYieldOfREWOil(RevenueYield calculationOutput) {
-        Assert.assertEquals(BigDecimalWithThreeDecimals.valueOf("7.000"), calculationOutput.getRevenueYieldList().get((OilID.REW)));
+        Assert.assertEquals(BigDecimalWithThreeDecimals.valueOf("7.000"), calculationOutput.getRevenueYieldMap().get((OilID.REW)));
     }
 
     private void assertRevenueYieldOfACCOil(RevenueYield calculationOutput) {
-        Assert.assertEquals(BigDecimalWithThreeDecimals.valueOf("1.000"), calculationOutput.getRevenueYieldList().get((OilID.ACC)));
+        Assert.assertEquals(BigDecimalWithThreeDecimals.valueOf("1.000"), calculationOutput.getRevenueYieldMap().get((OilID.ACC)));
     }
 
 }

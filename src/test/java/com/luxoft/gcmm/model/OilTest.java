@@ -13,8 +13,8 @@ public class OilTest {
 
     @Before
     public void initializeOils() {
-        acc = OilID.ACC.get();
-        rew = OilID.REW.get();
+        acc = OilID.ACC.getOil();
+        rew = OilID.REW.getOil();
     }
 
     @Test

@@ -6,16 +6,16 @@ import java.math.BigDecimal;
 import java.util.HashMap;
 import java.util.Map;
 
-public class PriceEarningRatio implements CalculationOutput {
+public class PriceEarningRatio {
 
-    private final Map<OilID,BigDecimal> priceEarningRatios = new HashMap<>();
+    private final Map<OilID,BigDecimal> priceEarningRatioMap = new HashMap<>();
 
-    public Map<OilID,BigDecimal> getPriceEarningRatios() {
-        return priceEarningRatios;
+    public Map<OilID,BigDecimal> getPriceEarningRatioMap() {
+        return priceEarningRatioMap;
     }
 
     public PriceEarningRatio addPriceEarningRatio(OilID oilID,BigDecimal revenueYield) {
-        priceEarningRatios.put(oilID,revenueYield);
+        priceEarningRatioMap.put(oilID,revenueYield);
         return this;
     }
 
@@ -23,7 +23,7 @@ public class PriceEarningRatio implements CalculationOutput {
     @Override
     public String toString() {
         return "PriceEarningRatio{" +
-                "priceEarningRatios=" + priceEarningRatios +
+                "priceEarningRatioMap=" + priceEarningRatioMap +
                 '}';
     }
 

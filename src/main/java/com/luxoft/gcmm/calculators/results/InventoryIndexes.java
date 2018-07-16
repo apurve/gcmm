@@ -5,7 +5,7 @@ import com.luxoft.gcmm.model.types.OilID;
 import java.math.BigDecimal;
 import java.util.EnumMap;
 
-public class InventoryIndexes implements CalculationOutput {
+public class InventoryIndexes {
 
     EnumMap<OilID, BigDecimal> inventoryIndexMap = new EnumMap<OilID, BigDecimal>(OilID.class);
 

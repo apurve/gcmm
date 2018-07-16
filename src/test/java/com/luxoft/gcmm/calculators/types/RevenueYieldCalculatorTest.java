@@ -20,23 +20,23 @@ public class RevenueYieldCalculatorTest {
 
     @Test(expected = IllegalArgumentException.class)
     public void testRevenueYieldForZeroPrice() {
-        revenueYieldCalculator.calculate(OilID.ACC.get(), BigDecimal.ZERO);
+        revenueYieldCalculator.calculate(OilID.ACC.getOil(), BigDecimal.ZERO);
     }
 
     @Test(expected = IllegalArgumentException.class)
     public void testRevenueYieldForNegativePrice() {
-        revenueYieldCalculator.calculate(OilID.ACC.get(), BigDecimal.valueOf(-10.0));
+        revenueYieldCalculator.calculate(OilID.ACC.getOil(), BigDecimal.valueOf(-10.0));
     }
 
     @Test
     public void testRevenueYieldForPositivePrice() {
-        BigDecimal revenueYield = revenueYieldCalculator.calculate(OilID.ACC.get(), BigDecimal.valueOf(10.0));
+        BigDecimal revenueYield = revenueYieldCalculator.calculate(OilID.ACC.getOil(), BigDecimal.valueOf(10.0));
         Assert.assertEquals(BigDecimalWithThreeDecimals.valueOf("0.100"), revenueYield);
     }
 
     @Test
     public void testRevenueYieldForPremiumOil() {
-        BigDecimal revenueYield = revenueYieldCalculator.calculate(OilID.TIM.get(), BigDecimal.valueOf(10.0));
+        BigDecimal revenueYield = revenueYieldCalculator.calculate(OilID.TIM.getOil(), BigDecimal.valueOf(10.0));
         Assert.assertEquals(BigDecimalWithThreeDecimals.valueOf("0.777"), revenueYield);
     }
 

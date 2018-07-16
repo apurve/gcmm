@@ -5,14 +5,12 @@ import com.luxoft.gcmm.model.types.OilID;
 import java.math.BigDecimal;
 import java.util.EnumMap;
 
-public class VolumeWeightedPrice implements CalculationOutput {
+public class VolumeWeightedPrice {
 
-    EnumMap<OilID, BigDecimal> volumeWeightedPriceMap = new EnumMap<OilID, BigDecimal>(OilID.class);
+    private EnumMap<OilID, BigDecimal> volumeWeightedPriceMap = new EnumMap<OilID, BigDecimal>(OilID.class);
 
-    public VolumeWeightedPrice addVolumeWeightedPrice(EnumMap<OilID, BigDecimal> volumeWeightedPriceMap) {
-        this.volumeWeightedPriceMap.clear();
+    public VolumeWeightedPrice(EnumMap<OilID, BigDecimal> volumeWeightedPriceMap) {
         this.volumeWeightedPriceMap.putAll(volumeWeightedPriceMap);
-        return this;
     }
 
     public EnumMap<OilID, BigDecimal> getVolumeWeightedPriceMap() {

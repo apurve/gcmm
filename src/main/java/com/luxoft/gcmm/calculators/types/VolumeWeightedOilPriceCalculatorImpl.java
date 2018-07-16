@@ -22,6 +22,7 @@ public class VolumeWeightedOilPriceCalculatorImpl implements VolumeWeightedOilPr
 
         VolumeWeightedHelper volumeWeightedHelper = new VolumeWeightedHelper();
         transactions.getTransactionList().forEach(volumeWeightedHelper);
+        
         Arrays.stream(OilID.values()).forEach(oil -> {
             VolumeWeightedHelper.VolumeWeightedMetaData data = volumeWeightedHelper.getVolumeWeightedHelperMap().get(oil);
             volumeWeightedPriceMap.put(oil,

@@ -19,23 +19,23 @@ public class PriceEarningRatioCalculatorTest {
 
     @Test(expected = IllegalArgumentException.class)
     public void testPriceEarningRatioForZeroPrice() {
-        priceEarningRatioCalculator.calculate(OilID.ACC.get(), BigDecimal.ZERO);
+        priceEarningRatioCalculator.calculate(OilID.ACC.getOil(), BigDecimal.ZERO);
     }
 
     @Test(expected = IllegalArgumentException.class)
     public void testPriceEarningRatioForNegativePrice() {
-        priceEarningRatioCalculator.calculate(OilID.ACC.get(), BigDecimal.valueOf(-10.0));
+        priceEarningRatioCalculator.calculate(OilID.ACC.getOil(), BigDecimal.valueOf(-10.0));
     }
 
     @Test
     public void testPriceEarningRatioForPositivePrice() {
-        BigDecimal priceEarningRatio = priceEarningRatioCalculator.calculate(OilID.ACC.get(), BigDecimal.valueOf(10.0));
+        BigDecimal priceEarningRatio = priceEarningRatioCalculator.calculate(OilID.ACC.getOil(), BigDecimal.valueOf(10.0));
         Assert.assertEquals(BigDecimalWithThreeDecimals.valueOf("100.000"), priceEarningRatio);
     }
 
     @Test
     public void testPriceEarningRatioForPremiumOil() {
-        BigDecimal priceEarningRatio = priceEarningRatioCalculator.calculate(OilID.TIM.get(), BigDecimal.valueOf(10.0));
+        BigDecimal priceEarningRatio = priceEarningRatioCalculator.calculate(OilID.TIM.getOil(), BigDecimal.valueOf(10.0));
         Assert.assertEquals(BigDecimalWithThreeDecimals.valueOf("12.870"), priceEarningRatio);
     }
 
